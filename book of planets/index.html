@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book of Planets - Solar System Explorer</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #000;
+            color: #fff;
+            overflow-x: hidden;
+            position: relative;
+            min-height: 100vh;
+        }
+
+        .stars {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+
+        .star {
+            position: absolute;
+            background-color: #fff;
+            border-radius: 50%;
+        }
+
+        .container {
+            max-width: 100vw;
+            padding: 20px;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        header {
+            margin-bottom: 30px;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            color: #4dabf7;
+            text-shadow: 0 0 10px rgba(77, 171, 247, 0.7);
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            color: #a5d8ff;
+            margin-bottom: 20px;
+        }
+
+        .zoom-controls {
+            margin: 20px 0;
+        }
+
+        button {
+            background: rgba(30, 30, 70, 0.7);
+            color: white;
+            border: 1px solid #4dabf7;
+            padding: 8px 15px;
+            margin: 0 5px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        button:hover {
+            background: rgba(50, 50, 120, 0.9);
+            box-shadow: 0 0 8px #4dabf7;
+        }
+
+        .solar-system {
+            position: relative;
+            width: 100%;
+            height: 70vh;
+            margin: 0 auto;
+            overflow: hidden;
+        }
+
+        .sun {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 80px;
+            height: 80px;
+            background: radial-gradient(circle, #ffd200, #ff6b00, #ff0000);
+            border-radius: 50%;
+            box-shadow: 0 0 40px #ff6b00, 0 0 80px #ff6b00;
+            transform: translate(-50%, -50%);
+            z-index: 10;
+            cursor: pointer;
+        }
+
+        .orbit {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .planet-container {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 0;
+            height: 0;
+        }
+
+        .planet {
+            position: absolute;
+            border-radius: 50%;
+            cursor: pointer;
+            transform: translate(-50%, -50%);
+            transition: transform 0.3s ease;
+        }
+
+        .planet:hover {
+            transform: translate(-50%, -50%) scale(1.2);
+        }
+
+        /* Planet sizes and colors */
+        .mercury { width: 12px; height: 12px; background: #a6a6a6; }
+        .venus { width: 18px; height: 18px; background: #e39e54; }
+        .earth { width: 20px; height: 20px; background: #6b93d6; }
+        .mars { width: 16px; height: 16px; background: #c1440e; }
+        .jupiter { width: 40px; height: 40px; background: #c9a77e; }
+        .saturn { width: 36px; height: 36px; background: #e4d191; }
+        .uranus { width: 28px; height: 28px; background: #b8e2f2; }
+        .neptune { width: 28px; height: 28px; background: #5b5ddf; }
+
+        /* Saturn's rings */
+        .saturn::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 60px;
+            height: 10px;
+            background: rgba(227, 202, 165, 0.7);
+            border-radius: 50%;
+            transform: translate(-50%, -50%) rotate(20deg);
+            z-index: -1;
+        }
+
+        /* Orbit sizes */
+        .mercury-orbit { width: 140px; height: 140px; }
+        .venus-orbit { width: 200px; height: 200px; }
+        .earth-orbit { width: 260px; height: 260px; }
+        .mars-orbit { width: 320px; height: 320px; }
+        .jupiter-orbit { width: 400px; height: 400px; }
+        .saturn-orbit { width: 480px; height: 480px; }
+        .uranus-orbit { width: 560px; height: 560px; }
+        .neptune-orbit { width: 640px; height: 640px; }
+
+        /* Animation for planets - FIXED VERSION */
+        @keyframes orbit {
+            0% { transform: rotate(0deg) translateX(var(--orbit-radius)) rotate(0deg); }
+            100% { transform: rotate(360deg) translateX(var(--orbit-radius)) rotate(-360deg); }
+        }
+
+        .mercury-container { 
+            --orbit-radius: 70px;
+            animation: orbit 4s linear infinite;
+        }
+        .venus-container { 
+            --orbit-radius: 100px;
+            animation: orbit 8s linear infinite;
+        }
+        .earth-container { 
+            --orbit-radius: 130px;
+            animation: orbit 12s linear infinite;
+        }
+        .mars-container { 
+            --orbit-radius: 160px;
+            animation: orbit 18s linear infinite;
+        }
+        .jupiter-container { 
+            --orbit-radius: 200px;
+            animation: orbit 30s linear infinite;
+        }
+        .saturn-container { 
+            --orbit-radius: 240px;
+            animation: orbit 45s linear infinite;
+        }
+        .uranus-container { 
+            --orbit-radius: 280px;
+            animation: orbit 60s linear infinite;
+        }
+        .neptune-container { 
+            --orbit-radius: 320px;
+            animation: orbit 75s linear infinite;
+        }
+
+        /* Comet */
+        .comet {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: linear-gradient(to right, transparent, #fff);
+            border-radius: 50%;
+            box-shadow: 0 0 10px #fff;
+            animation: comet 20s linear infinite;
+        }
+
+        @keyframes comet {
+            0% { top: -10%; left: 90%; opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { top: 110%; left: -10%; opacity: 0; }
+        }
+
+        /* Meteor */
+        .meteor {
+            position: absolute;
+            width: 2px;
+            height: 20px;
+            background: linear-gradient(to bottom, transparent, #fff);
+            border-radius: 50%;
+            box-shadow: 0 0 10px #4dabf7;
+            animation: meteor 5s linear infinite;
+        }
+
+        @keyframes meteor {
+            0% { top: -5%; left: 10%; opacity: 0; }
+            10% { opacity: 1; }
+            30% { opacity: 1; }
+            100% { top: 105%; left: 90%; opacity: 0; }
+        }
+
+        /* Info Panel */
+        .info-panel {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 90%;
+            max-width: 600px;
+            background: rgba(10, 10, 40, 0.95);
+            border: 2px solid #4dabf7;
+            border-radius: 10px;
+            padding: 20px;
+            z-index: 100;
+            display: none;
+            box-shadow: 0 0 30px rgba(77, 171, 247, 0.5);
+        }
+
+        .info-panel h2 {
+            color: #4dabf7;
+            margin-bottom: 15px;
+            border-bottom: 1px solid #4dabf7;
+            padding-bottom: 10px;
+        }
+
+        .info-panel p {
+            margin-bottom: 15px;
+            line-height: 1.6;
+        }
+
+        .info-panel iframe {
+            width: 100%;
+            height: 300px;
+            border: none;
+            border-radius: 5px;
+            margin-bottom: 15px;
+            /* Fix for iframe scroll */
+            overflow: hidden;
+        }
+
+        .iframe-container {
+            width: 100%;
+            height: 300px;
+            border-radius: 5px;
+            overflow: hidden;
+            margin-bottom: 15px;
+            position: relative;
+        }
+
+        .iframe-container iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            background: none;
+            border: none;
+            color: #fff;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        .full-info-link {
+            display: inline-block;
+            margin-top: 10px;
+            color: #4dabf7;
+            text-decoration: none;
+            border: 1px solid #4dabf7;
+            padding: 5px 10px;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+
+        .full-info-link:hover {
+            background: rgba(77, 171, 247, 0.2);
+        }
+
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 99;
+            display: none;
+        }
+
+        footer {
+            margin-top: 30px;
+            padding: 20px;
+            color: #a5d8ff;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .subtitle {
+                font-size: 1rem;
+            }
+            
+            .solar-system {
+                height: 60vh;
+            }
+            
+            .sun {
+                width: 60px;
+                height: 60px;
+            }
+            
+            .mercury-orbit { width: 100px; height: 100px; }
+            .venus-orbit { width: 140px; height: 140px; }
+            .earth-orbit { width: 180px; height: 180px; }
+            .mars-orbit { width: 220px; height: 220px; }
+            .jupiter-orbit { width: 280px; height: 280px; }
+            .saturn-orbit { width: 340px; height: 340px; }
+            .uranus-orbit { width: 400px; height: 400px; }
+            .neptune-orbit { width: 460px; height: 460px; }
+            
+            .mercury-container { --orbit-radius: 50px; }
+            .venus-container { --orbit-radius: 70px; }
+            .earth-container { --orbit-radius: 90px; }
+            .mars-container { --orbit-radius: 110px; }
+            .jupiter-container { --orbit-radius: 140px; }
+            .saturn-container { --orbit-radius: 170px; }
+            .uranus-container { --orbit-radius: 200px; }
+            .neptune-container { --orbit-radius: 230px; }
+
+            .iframe-container {
+                height: 250px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .solar-system {
+                height: 50vh;
+            }
+            
+            .mercury-orbit { width: 80px; height: 80px; }
+            .venus-orbit { width: 110px; height: 110px; }
+            .earth-orbit { width: 140px; height: 140px; }
+            .mars-orbit { width: 170px; height: 170px; }
+            .jupiter-orbit { width: 210px; height: 210px; }
+            .saturn-orbit { width: 250px; height: 250px; }
+            .uranus-orbit { width: 290px; height: 290px; }
+            .neptune-orbit { width: 330px; height: 330px; }
+            
+            .mercury-container { --orbit-radius: 40px; }
+            .venus-container { --orbit-radius: 55px; }
+            .earth-container { --orbit-radius: 70px; }
+            .mars-container { --orbit-radius: 85px; }
+            .jupiter-container { --orbit-radius: 105px; }
+            .saturn-container { --orbit-radius: 125px; }
+            .uranus-container { --orbit-radius: 145px; }
+            .neptune-container { --orbit-radius: 165px; }
+
+            .iframe-container {
+                height: 200px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="stars" id="stars"></div>
+    
+    <div class="container">
+        <header>
+            <h1>Book of Planets</h1>
+            <p class="subtitle">Explore our amazing solar system</p>
+            <small>click on a planet to view info about it.</small>
+            
+            <div class="zoom-controls">
+                <button id="zoom-in">Zoom In</button>
+                <button id="zoom-out">Zoom Out</button>
+                <button id="reset-zoom">Reset Zoom</button>
+            </div>
+        </header>
+        
+        <div class="solar-system" id="solar-system">
+            <!-- Sun -->
+            <div class="sun" data-name="Sun" data-info="The Sun is the star at the center of the Solar System. It is a nearly perfect sphere of hot plasma, heated to incandescence by nuclear fusion reactions in its core, radiating the energy mainly as visible light and infrared radiation. It is by far the most important source of energy for life on Earth."></div>
+            
+            <!-- Planet Orbits -->
+            <div class="orbit mercury-orbit"></div>
+            <div class="orbit venus-orbit"></div>
+            <div class="orbit earth-orbit"></div>
+            <div class="orbit mars-orbit"></div>
+            <div class="orbit jupiter-orbit"></div>
+            <div class="orbit saturn-orbit"></div>
+            <div class="orbit uranus-orbit"></div>
+            <div class="orbit neptune-orbit"></div>
+            
+            <!-- Planets with fixed container approach -->
+            <div class="planet-container mercury-container">
+                <div class="planet mercury" data-name="Mercury" data-info="Mercury is the smallest and innermost planet in the Solar System. Its orbit around the Sun takes 87.97 Earth days, the shortest of all the planets in the Solar System. It is named after the Roman deity Mercury, the messenger of the gods."></div>
+            </div>
+            
+            <div class="planet-container venus-container">
+                <div class="planet venus" data-name="Venus" data-info="Venus is the second planet from the Sun. It is named after the Roman goddess of love and beauty. As the second-brightest natural object in Earth's night sky after the Moon, Venus can cast shadows and can be, on rare occasion, visible to the naked eye in broad daylight."></div>
+            </div>
+            
+            <div class="planet-container earth-container">
+                <div class="planet earth" data-name="Earth" data-info="Earth is the third planet from the Sun and the only astronomical object known to harbor life. About 29% of Earth's surface is land consisting of continents and islands. The remaining 71% is covered with water, mostly by oceans but also lakes, rivers and other fresh water, which together constitute the hydrosphere."></div>
+            </div>
+            
+            <div class="planet-container mars-container">
+                <div class="planet mars" data-name="Mars" data-info="Mars is the fourth planet from the Sun and the second-smallest planet in the Solar System, being larger than only Mercury. In English, Mars carries the name of the Roman god of war and is often referred to as the 'Red Planet'."></div>
+            </div>
+            
+            <div class="planet-container jupiter-container">
+                <div class="planet jupiter" data-name="Jupiter" data-info="Jupiter is the fifth planet from the Sun and the largest in the Solar System. It is a gas giant with a mass one-thousandth that of the Sun, but two-and-a-half times that of all the other planets in the Solar System combined."></div>
+            </div>
+            
+            <div class="planet-container saturn-container">
+                <div class="planet saturn" data-name="Saturn" data-info="Saturn is the sixth planet from the Sun and the second-largest in the Solar System, after Jupiter. It is a gas giant with an average radius of about nine times that of Earth. It only has one-eighth the average density of Earth; however, with its larger volume, Saturn is over 95 times more massive."></div>
+            </div>
+            
+            <div class="planet-container uranus-container">
+                <div class="planet uranus" data-name="Uranus" data-info="Uranus is the seventh planet from the Sun. Its name is a reference to the Greek god of the sky, Uranus, who, according to Greek mythology, was the grandfather of Zeus (Jupiter) and father of Cronus (Saturn). It has the third-largest planetary radius and fourth-largest planetary mass in the Solar System."></div>
+            </div>
+            
+            <div class="planet-container neptune-container">
+                <div class="planet neptune" data-name="Neptune" data-info="Neptune is the eighth and farthest-known Solar planet from the Sun. In the Solar System, it is the fourth-largest planet by diameter, the third-most-massive planet, and the densest giant planet. It is 17 times the mass of Earth, slightly more massive than its near-twin Uranus."></div>
+            </div>
+            
+            <!-- Comet -->
+            <div class="comet"></div>
+            
+            <!-- Meteor -->
+            <div class="meteor"></div>
+        </div>
+        
+        <footer>
+            <p>Book of Planets - A journey through our solar system | Created by Samuel Isola with HTML, CSS and JavaScript</p>
+            <a href="https://isolasamuel.netlify.app" target="_blank" title="hire me">Get your website!</a>
+        </footer>
+    </div>
+    
+    <!-- Info Panel -->
+    <div class="overlay" id="overlay"></div>
+    <div class="info-panel" id="info-panel">
+        <button class="close-btn" id="close-btn">&times;</button>
+        <h2 id="info-title">Planet Information</h2>
+        <div class="iframe-container">
+            <iframe id="info-iframe" src=""></iframe>
+        </div>
+        <p id="info-description"></p>
+        <a href="#" class="full-info-link" id="full-info-link" target="_blank">View Full Information</a>
+    </div>
+    
+    <script>
+        // Create stars
+        const starsContainer = document.getElementById('stars');
+        for (let i = 0; i < 200; i++) {
+            const star = document.createElement('div');
+            star.classList.add('star');
+            star.style.width = Math.random() * 2 + 'px';
+            star.style.height = star.style.width;
+            star.style.left = Math.random() * 100 + '%';
+            star.style.top = Math.random() * 100 + '%';
+            star.style.opacity = Math.random() * 0.7 + 0.3;
+            starsContainer.appendChild(star);
+        }
+        
+        // Create additional comets and meteors
+        for (let i = 0; i < 3; i++) {
+            const comet = document.createElement('div');
+            comet.classList.add('comet');
+            comet.style.animationDelay = Math.random() * 20 + 's';
+            comet.style.left = Math.random() * 100 + '%';
+            document.querySelector('.solar-system').appendChild(comet);
+            
+            const meteor = document.createElement('div');
+            meteor.classList.add('meteor');
+            meteor.style.animationDelay = Math.random() * 5 + 's';
+            meteor.style.left = Math.random() * 100 + '%';
+            document.querySelector('.solar-system').appendChild(meteor);
+        }
+        
+        // Zoom functionality
+        const solarSystem = document.getElementById('solar-system');
+        const zoomInBtn = document.getElementById('zoom-in');
+        const zoomOutBtn = document.getElementById('zoom-out');
+        const resetZoomBtn = document.getElementById('reset-zoom');
+        
+        let scale = 1;
+        const minScale = 0.5;
+        const maxScale = 2;
+        const scaleStep = 0.1;
+        
+        zoomInBtn.addEventListener('click', () => {
+            if (scale < maxScale) {
+                scale += scaleStep;
+                solarSystem.style.transform = `scale(${scale})`;
+            }
+        });
+        
+        zoomOutBtn.addEventListener('click', () => {
+            if (scale > minScale) {
+                scale -= scaleStep;
+                solarSystem.style.transform = `scale(${scale})`;
+            }
+        });
+        
+        resetZoomBtn.addEventListener('click', () => {
+            scale = 1;
+            solarSystem.style.transform = `scale(${scale})`;
+        });
+        
+        // Info panel functionality
+        const infoPanel = document.getElementById('info-panel');
+        const overlay = document.getElementById('overlay');
+        const closeBtn = document.getElementById('close-btn');
+        const infoTitle = document.getElementById('info-title');
+        const infoIframe = document.getElementById('info-iframe');
+        const infoDescription = document.getElementById('info-description');
+        const fullInfoLink = document.getElementById('full-info-link');
+        
+        // Add click events to planets and sun
+        document.querySelectorAll('.planet, .sun').forEach(element => {
+            element.addEventListener('click', () => {
+                const name = element.getAttribute('data-name');
+                const info = element.getAttribute('data-info');
+                
+                infoTitle.textContent = name;
+                infoDescription.textContent = info;
+                
+                // Set iframe source based on the planet name - FIXED to use mobile Wikipedia
+                let searchQuery = name;
+                if (name === "Sun") {
+                    searchQuery = "Sun";
+                }
+                // Use mobile Wikipedia for better responsive experience
+                infoIframe.src = `https://en.m.wikipedia.org/wiki/${searchQuery}`;
+                
+                // Set full info link
+                fullInfoLink.href = `planet.html?planet=${name.toLowerCase()}`;
+                
+                // Show info panel and overlay
+                infoPanel.style.display = 'block';
+                overlay.style.display = 'block';
+            });
+        });
+        
+        // Close info panel
+        closeBtn.addEventListener('click', closeInfoPanel);
+        overlay.addEventListener('click', closeInfoPanel);
+        
+        function closeInfoPanel() {
+            infoPanel.style.display = 'none';
+            overlay.style.display = 'none';
+            infoIframe.src = '';
+        }
+        
+        // Prevent horizontal scroll on mobile
+        window.addEventListener('resize', () => {
+            document.body.style.overflowX = 'hidden';
+        });
+        
+        // Fix iframe scrolling issues
+        document.addEventListener('DOMContentLoaded', function() {
+            const iframes = document.querySelectorAll('iframe');
+            iframes.forEach(iframe => {
+                iframe.setAttribute('scrolling', 'no');
+            });
+        });
+    </script>
+</body>
+</html>

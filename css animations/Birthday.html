@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday Gbemileke!</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            height: 100vh;
+            overflow: hidden;
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+        }
+
+        /* Birthday Message */
+        .birthday-message {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 10;
+            animation: messagePop 2s ease-out 1s forwards;
+            opacity: 0;
+        }
+
+        .birthday-message h1 {
+            font-size: 3.5rem;
+            color: white;
+            text-shadow: 3px 3px 10px rgba(0,0,0,0.3);
+            margin-bottom: 10px;
+            background: linear-gradient(45deg, #FFD700, #FF6B6B, #4ECDC4);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .birthday-message h2 {
+            font-size: 1.8rem;
+            color: #FFD700;
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.3);
+            font-weight: 300;
+        }
+
+        @keyframes messagePop {
+            0% {
+                opacity: 0;
+                transform: translate(-50%, -50%) scale(0.5);
+            }
+            70% {
+                transform: translate(-50%, -50%) scale(1.1);
+            }
+            100% {
+                opacity: 1;
+                transform: translate(-50%, -50%) scale(1);
+            }
+        }
+
+        /* Balloons */
+        .balloon {
+            position: absolute;
+            bottom: -100px;
+            width: 50px;
+            height: 60px;
+            border-radius: 50%;
+            animation: floatUp 8s ease-in infinite;
+        }
+
+        .balloon::before {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 2px;
+            height: 40px;
+            background: rgba(255,255,255,0.7);
+        }
+
+        .balloon:nth-child(1) {
+            left: 20%;
+            background: radial-gradient(circle at 30% 30%, #FF6B6B, #FF5252);
+            animation-delay: 0s;
+        }
+
+        .balloon:nth-child(2) {
+            left: 35%;
+            background: radial-gradient(circle at 30% 30%, #4ECDC4, #00B894);
+            animation-delay: 1s;
+        }
+
+        .balloon:nth-child(3) {
+            left: 50%;
+            background: radial-gradient(circle at 30% 30%, #FFD700, #FFA726);
+            animation-delay: 2s;
+        }
+
+        .balloon:nth-child(4) {
+            left: 65%;
+            background: radial-gradient(circle at 30% 30%, #A29BFE, #6C5CE7);
+            animation-delay: 3s;
+        }
+
+        .balloon:nth-child(5) {
+            left: 80%;
+            background: radial-gradient(circle at 30% 30%, #FD79A8, #E84393);
+            animation-delay: 4s;
+        }
+
+        @keyframes floatUp {
+            0% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100vh) rotate(20deg);
+                opacity: 0;
+            }
+        }
+
+        /* Confetti */
+        .confetti {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            opacity: 0;
+            animation: confettiFall 5s linear infinite;
+        }
+
+        .confetti:nth-child(6) { left: 10%; background: #FF6B6B; animation-delay: 0s; }
+        .confetti:nth-child(7) { left: 20%; background: #4ECDC4; animation-delay: 1s; }
+        .confetti:nth-child(8) { left: 30%; background: #FFD700; animation-delay: 2s; }
+        .confetti:nth-child(9) { left: 40%; background: #A29BFE; animation-delay: 3s; }
+        .confetti:nth-child(10) { left: 50%; background: #FD79A8; animation-delay: 4s; }
+        .confetti:nth-child(11) { left: 60%; background: #FF6B6B; animation-delay: 0.5s; }
+        .confetti:nth-child(12) { left: 70%; background: #4ECDC4; animation-delay: 1.5s; }
+        .confetti:nth-child(13) { left: 80%; background: #FFD700; animation-delay: 2.5s; }
+        .confetti:nth-child(14) { left: 90%; background: #A29BFE; animation-delay: 3.5s; }
+
+        @keyframes confettiFall {
+            0% {
+                transform: translateY(-100px) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        /* Birthday Date */
+        .birthday-date {
+            position: absolute;
+            bottom: 50px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: white;
+            font-size: 1.5rem;
+            text-shadow: 1px 1px 4px rgba(0,0,0,0.5);
+            animation: fadeIn 2s ease-in-out 3s forwards;
+            opacity: 0;
+        }
+
+        @keyframes fadeIn {
+            to { opacity: 1; }
+        }
+
+        /* Pulsating heart */
+        .heart {
+            position: absolute;
+            top: 30%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 2rem;
+            color: #FF6B6B;
+            animation: heartbeat 1.5s ease-in-out infinite;
+            opacity: 0;
+            animation-delay: 4s;
+        }
+
+        @keyframes heartbeat {
+            0%, 100% { transform: translate(-50%, -50%) scale(1); }
+            50% { transform: translate(-50%, -50%) scale(1.3); }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Balloons -->
+        <div class="balloon"></div>
+        <div class="balloon"></div>
+        <div class="balloon"></div>
+        <div class="balloon"></div>
+        <div class="balloon"></div>
+
+        <!-- Confetti -->
+        <div class="confetti"></div>
+        <div class="confetti"></div>
+        <div class="confetti"></div>
+        <div class="confetti"></div>
+        <div class="confetti"></div>
+        <div class="confetti"></div>
+        <div class="confetti"></div>
+        <div class="confetti"></div>
+        <div class="confetti"></div>
+
+        <!-- Heart -->
+        <div class="heart">❤️</div>
+
+        <!-- Birthday Message -->
+        <div class="birthday-message">
+            <h1>Happy Birthday Gbemileke!</h1>
+            <h2>October 21st</h2>
+        </div>
+
+        <!-- Date -->
+        <div class="birthday-date">
+            Celebrating your special day! 🎉
+        </div>
+    </div>
+</body>
+</html>
