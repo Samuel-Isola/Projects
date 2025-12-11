@@ -1,0 +1,1055 @@
+<!DOCTYPE html>
+<html lang="en-ng" class="dark-mode">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>D.i.G Homes | Luxury Real Estate Investments</title>
+    <meta name="description" content="Premium real estate investments with exceptional returns. Exclusive properties in Nigeria's most promising locations.">
+    
+    <!-- Fonts & Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Cormorant+Garamond:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/luxury.css">
+    <link rel="stylesheet" href="css/mobile-fixes.css">
+    <link rel="stylesheet" href="css/animations.css">
+
+    <style>
+                .hero-title {
+            font-size: 4rem;
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 1rem;
+            letter-spacing: -0.5px;
+        }
+        
+        .hero-subtitle {
+            font-size: 1.5rem;
+            opacity: 0.9;
+            font-weight: 300;
+        }
+        
+        .changing-word-container {
+            display: inline-block;
+            position: relative;
+            min-width: 180px;
+            text-align: left;
+            vertical-align: top;
+            height: 80px;
+            margin: 0 5px;
+        }
+        
+        .changing-word {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+            color: #F6941C;
+            font-weight: 600;
+            text-shadow: 0 2px 10px rgba(255, 215, 0, 0.3);
+        }
+        
+        .changing-word.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .comma {
+            margin: 2px;
+        }
+        
+        /* Responsive design */
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            
+            .changing-word-container {
+                min-width: 140px;
+                height: 60px;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.2rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .hero-title {
+                font-size: 2rem;
+            }
+            
+            .changing-word-container {
+                min-width: 120px;
+                height: 50px;
+            }
+            
+            .hero-subtitle {
+                font-size: 1rem;
+            }
+        }
+        
+        /* Decorative elements */
+        .highlight {
+            position: relative;
+            display: inline-block;
+        }
+        
+        .highlight::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, #ffd700, transparent);
+            border-radius: 2px;
+        }
+    </style>
+    
+    <!-- Favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="images/logo.jpg">
+    <link rel="icon" type="image/png" sizes="32x32" href="images/logo.jpg">
+    <link rel="icon" type="image/png" sizes="16x16" href="images/logo.jpg">
+    <link rel="manifest" href="images/logo.jpg">
+
+     <!-- Open Graph -->
+    <meta property="og:title" content="D.i.G Homes | Premium Real Estate Investments">
+    <meta property="og:description" content="Building Dreams, Securing Prosperity with luxury real estate investments in Nigeria">
+    <meta property="og:image" content="https://dighomes.com/images/og-image.jpg">
+    <meta property="og:url" content="https://dighomes.com">
+    <meta property="og:type" content="website">
+    
+    <!-- Twitter Cards -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="D.i.G Homes | Premium Real Estate">
+    <meta name="twitter:description" content="Transform aspirations into reality with trusted property investments">
+    
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "RealEstateAgent",
+        "name": "D.i.G Homes",
+        "image": "https://dighomes.com/images/logo.png",
+        "description": "Premium real estate company offering luxury serviced plots and prime land investments in strategic Nigerian locations",
+        "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Ilorin",
+            "addressRegion": "Kwara State",
+            "addressCountry": "Nigeria"
+        },
+        "telephone": "+2349034097278",
+        "email": "dighqltd@gmail.com",
+        "openingHours": "Mo-Fr 09:00-18:00, Sa 10:00-16:00",
+        "priceRange": "₦500K - ₦20M",
+        "sameAs": [
+            "https://www.instagram.com/dig_homes",
+            "https://www.facebook.com/dighomeshq"
+        ]
+    }
+    </script>
+</head>
+<body>
+    <!-- Animated Background Elements -->
+    <div class="luxury-background">
+        <div class="particle-container"></div>
+        <div class="glow-effect"></div>
+        <div class="grid-overlay"></div>
+    </div>
+
+    <!-- Loading Screen -->
+    <div class="luxury-loader">
+        <div class="loader-content">
+            <div class="diamond-loader">
+                <div class="diamond diamond-1"></div>
+                <div class="diamond diamond-2"></div>
+                <div class="diamond diamond-3"></div>
+                <div class="diamond diamond-4"></div>
+            </div>
+            <div class="loader-text-container">
+                <h2 class="loader-brand">D.i.G <span class="loader-accent">HOMES</span></h2>
+                <p class="loader-subtitle">Loading your Luxury Experience</p>
+                <div class="progress-bar">
+                    <div class="progress-fill"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="luxury-nav" id="mainNav">
+        <div class="nav-container">
+            <!-- Logo -->
+            <a href="index.html" class="brand-logo">
+                <div class="logo-icon">◈</div>
+                <div class="logo-text">
+                    <span class="logo-primary">D.i.G</span>
+                    <span class="logo-separator">|</span>
+                    <span class="logo-secondary">HOMES</span>
+                </div>
+            </a>
+
+            <!-- Desktop Menu -->
+            <div class="nav-menu">
+                <a href="index.html" class="nav-link active">
+                    <span class="link-text">Home</span>
+                    <span class="link-underline"></span>
+                </a>
+                <a href="about.html" class="nav-link">
+                    <span class="link-text">About</span>
+                    <span class="link-underline"></span>
+                </a>
+                <a href="properties.html" style="display: none;" class="nav-link">
+                    <span class="link-text">Properties</span>
+                    <span class="link-underline"></span>
+                </a>
+                <a href="contact.html" class="nav-link">
+                    <span class="link-text">Contact</span>
+                    <span class="link-underline"></span>
+                </a>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="nav-actions">
+                <a href="contact.html#consultationForm" class="btn-consultations">
+                    <i class="fas fa-calendar-check" style="color: #F6941C;"></i>
+                    <span>Free Consultation</span>
+                </a>
+                <div class="mobile-toggle" id="mobileToggle">
+                    <span class="toggle-line"></span>
+                    <span class="toggle-line"></span>
+                    <span class="toggle-line"></span>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="luxury-hero" id="hero"  style="background: linear-gradient(to top, transparent, rgba(255, 255, 255, 0.75));">
+        <div class="hero-background" style="background-image: url('images/hero.jpg');background-position: center;background-size: cover; background-repeat: no-repeat;">
+            <div class="bg-video">
+                <video autoplay muted loop playsinline>
+                    <source src="Peview.mp4" type="video/mp4">
+                </video>
+            </div>
+            <div class="bg-overlay"></div>
+        </div>
+        
+        <div class="hero-content">
+            <div class="hero-badge">Exclusive Real Estate</div>
+            
+                        <h1 class="hero-title">
+                Building 
+                <div class="changing-word-container">
+                    <span class="changing-word" data-word="Dreams">Dreams</span>
+                    <span class="changing-word" data-word="Homes">Homes</span>
+                    <span class="changing-word" data-word="Lives">Lives</span>
+                </div>
+                <span class="comma">,</span> Securing Prosperity.
+            </h1>
+            <p class="hero-subtitle">
+                Transforming aspirations into reality, one step at a time
+            </p>
+
+            <!-- Hero Stats -->
+            <div class="hero-stats">
+                <div class="stat-card">
+                    <div class="stat-value" data-count="500">0</div>
+                    <div class="stat-label">Satisfied Investors</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value" data-count="100">0</div>
+                    <div class="stat-label">% Legal Compliance</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value" data-count="2.5">0</div>
+                    <div class="stat-label">Billion+ Value</div>
+                </div>
+            </div>
+
+            <!-- CTA Buttons -->
+            <div class="hero-actions">
+                <a href="#properties" class="btn-primarys">
+                    <span>Explore Properties</span>
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+                <a href="#contact" class="btns-secondary">
+                    <span>Contact Us</span>
+                </a>
+            </div>
+        </div>
+
+        <!-- Scroll Indicator -->
+        <div class="scroll-indicator">
+            <div class="scroll-line"></div>
+            <span class="scroll-text">Discover More</span>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="luxury-features" style="background-image: url('images/form.jpg');background-position: center;background-size: cover; background-repeat: no-repeat;" id="features">
+        <div class="section-container">
+            <div class="section-header">
+                <div class="section-label">Why Choose Us</div>
+                <h2 class="section-title" style="color: black;">Unmatched Excellence</h2>
+                <p class="section-subtitle" style="color: #333;">
+                    We redefine real estate investment through unparalleled service, security, and strategic vision.
+                </p>
+            </div>
+
+            <div class="features-grid">
+                <!-- Feature 1 -->
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <div class="icon-wrapper">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                    </div>
+                    <div class="feature-content">
+                        <h3>Ironclad Security</h3>
+                        <p>Complete documentation, legal backing, and title verification ensuring your investment is fully protected and dispute-free.</p>
+                    </div>
+                    <div class="feature-hover"></div>
+                </div>
+
+                <!-- Feature 2 -->
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <div class="icon-wrapper">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                    </div>
+                    <div class="feature-content">
+                        <h3>Premium Returns</h3>
+                        <p>Strategic locations with proven 15-25% annual appreciation rates, maximizing your investment growth potential.</p>
+                    </div>
+                    <div class="feature-hover"></div>
+                </div>
+
+                <!-- Feature 3 -->
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <div class="icon-wrapper">
+                            <i class="fas fa-handshake"></i>
+                        </div>
+                    </div>
+                    <div class="feature-content">
+                        <h3>Community Harmony</h3>
+                        <p>Zero Omo-Onile issues. We handle all community relations and ensure seamless property transition.</p>
+                    </div>
+                    <div class="feature-hover"></div>
+                </div>
+
+                <!-- Feature 4 -->
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <div class="icon-wrapper">
+                            <i class="fas fa-crown"></i>
+                        </div>
+                    </div>
+                    <div class="feature-content">
+                        <h3>White-Glove Service</h3>
+                        <p>Dedicated investment consultants providing personalized guidance from acquisition to property management.</p>
+                    </div>
+                    <div class="feature-hover"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Properties Preview -->
+    <section class="properties-preview" id="properties">
+        <div class="section-container">
+            <div class="section-header">
+                <div class="section-label">Premium Selection</div>
+                <h2 class="section-title">Exclusive Properties</h2>
+                <p class="section-subtitle">
+                    Curated investments with exceptional growth potential in strategic locations.
+                </p>
+            </div>
+
+            <div class="properties-grid">
+                <!-- Property 1 -->
+                <div class="property-card">
+                    <div class="property-media">
+                        <div class="property-image" style="background-image: url('images/for_sale.jpg')">
+                            <div class="property-overlay">
+                                <div class="property-badge">Premium</div>
+                                <div class="property-actions">
+                                    <button class="action-btn"><i class="fas fa-expand"></i></button>
+                                    <button class="action-btn"><i class="fas fa-heart"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="property-gallery" >
+                            <div class="gallery-item active"></div>
+                        </div>
+                    </div>
+                    <div class="property-details">
+                        <div class="property-header">
+                            <h3 class="property-title">Golden Park Estates</h3>
+                            <div class="property-price">
+                                <span class="price-value">₦3.5M</span>
+                                <span class="price-label">Starting Price</span>
+                            </div>
+                        </div>
+                        <p class="property-description">
+                            Serviced plots in Malete, KWASU with registered survey titles. Perfect for residential and investment purposes.
+                        </p>
+                        <div class="property-features">
+                            <div class="feature">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span>Malete, KWASU</span>
+                            </div>
+                            <div class="feature">
+                                <i class="fas fa-expand-arrows-alt"></i>
+                                <span>Various Sizes</span>
+                            </div>
+                            <div class="feature">
+                            </div>
+                        </div>
+                        <div class="property-footer">
+                            <a href="#luxurycontactform" style="display: none;" class="btn-view">View Details</a>
+                            <a href="#luxurycontactform" class="btn-inquire">Inquire Now</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Property 2 -->
+                <div class="property-card">
+                    <div class="property-media">
+                        <div class="property-image" style="background-image: url('images/for_sale2.jpg')">
+                            <div class="property-overlay">
+                                <div class="property-badge">Virgin Land</div>
+                                <div class="property-actions">
+                                    <button class="action-btn"><i class="fas fa-expand"></i></button>
+                                    <button class="action-btn"><i class="fas fa-heart"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="property-gallery">
+                            <div class="gallery-item active"></div>                        </div>
+                    </div>
+                    <div class="property-details">
+                        <div class="property-header">
+                            <h3 class="property-title">Kwasu Prime Land</h3>
+                            <div class="property-price">
+                                <span class="price-value">₦500K</span>
+                                <span class="price-label">Starting Price</span>
+                            </div>
+                        </div>
+                        <p class="property-description">
+                            Prime virgin land available in Kwasu, Malete. Located after Dara Hostel, along Jeukunu Road.
+                        </p>
+                        <div class="property-features">
+                            <div class="feature">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span>Kwasu, Malete</span>
+                            </div>
+                            <div class="feature">
+                                <i class="fas fa-expand-arrows-alt"></i>
+                                <span>Large Plots</span>
+                            </div>
+                            <div class="feature">
+                                <i class="fas fa-tree"></i>
+                                <span>Natural Surroundings</span>
+                            </div>
+                        </div>
+                        <div class="property-footer">
+                            <a href="#luxurycontactform" style="display: none;" class="btn-view">View Details</a>
+                            <a href="#luxurycontactform" class="btn-inquire">Inquire Now</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Property 3 -->
+                <div class="property-card">
+                    <div class="property-media">
+                        <div class="property-image" style="background-image: url('https://images.unsplash.com/photo-1568605114967-8130f3a36994?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80')">
+                            <div class="property-overlay">
+                                <div class="property-badge">Coming Soon</div>
+                                <div class="property-actions">
+                                    <button class="action-btn"><i class="fas fa-expand"></i></button>
+                                    <button class="action-btn"><i class="fas fa-heart"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="property-gallery">
+                            <div class="gallery-item active"></div>
+                            <div class="gallery-item"></div>
+                            <div class="gallery-item"></div>
+                        </div>
+                    </div>
+                    <div class="property-details">
+                        <div class="property-header">
+                            <h3 class="property-title">Emerald Heights</h3>
+                            <div class="property-price">
+                                <span class="price-value">₦8.5M</span>
+                                <span class="price-label">Starting Price</span>
+                            </div>
+                        </div>
+                        <p class="property-description">
+                            Ultra-premium serviced plots with modern amenities and exclusive community features.
+                        </p>
+                        <div class="property-features">
+                            <div class="feature">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span>Premium Location</span>
+                            </div>
+                            <div class="feature">
+                                <i class="fas fa-swimming-pool"></i>
+                                <span>Resort Amenities</span>
+                            </div>
+                            <div class="feature">
+                                <i class="fas fa-shield-alt"></i>
+                                <span>24/7 Security</span>
+                            </div>
+                        </div>
+                        <div class="property-footer">
+                            <button onclick="document.location='#luxurycontactform'" class="btn-primarys">Get Notified</button>
+                            <a href="#luxurycontactform" class="btns-secondary">Priority List</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section-footer" style="display: none;">
+                <a href="properties.html" class="btn-view-all">
+                    <span>View All Properties</span>
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Investment Calculator -->
+    <section class="investment-calculator">
+        <div class="calculator-container">
+            <div class="calculator-header">
+                <h2 style="color: white;">Investment Projection</h2>
+                <p>Calculate your potential returns with our premium properties</p>
+            </div>
+            
+            <div class="calculator-content">
+                <div class="calculator-form">
+                    <div class="form-group">
+                        <label>Property Type</label>
+                        <select class="form-select" id="calcProperty">
+                            <option value="golden-park">Golden Park Estates</option>
+                            <option value="virgin-land">Kwasu Prime Land</option>
+                            <option value="premium">Emerald Heights</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Investment Amount (₦)</label>
+                        <input type="range" id="calcAmount" min="500000" max="50000000" step="500000" value="3500000">
+                        <div class="range-value">
+                            <span id="amountValue" style="color: white;">₦3,500,000</span>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Investment Period (Years)</label>
+                        <input type="range" id="calcYears" min="1" max="10" step="1" value="5">
+                        <div class="range-value">
+                            <span id="yearsValue" style="color: white;">5 Years</span>
+                        </div>
+                    </div>
+                    
+                    <button style="display: none;" class="btn-calculate">Calculate Returns</button>
+                </div>
+                
+                <div class="calculator-results">
+                    <div class="result-card">
+                        <div class="result-label">Estimated Value</div>
+                        <div class="result-value" id="futureValue">₦0</div>
+                    </div>
+                    
+                    <div class="result-card">
+                        <div class="result-label">Potential Profit</div>
+                        <div class="result-value" id="potentialProfit">₦0</div>
+                    </div>
+                    
+                    <div class="result-card">
+                        <div class="result-label">Annual ROI</div>
+                        <div class="result-value" id="annualROI">0%</div>
+                    </div>
+                    
+                    <div class="result-card">
+                        <div class="result-label">Growth Rate</div>
+                        <div class="result-value" id="growthRate">0%</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="luxury-testimonials">
+        <div class="section-container">
+            <div class="section-header">
+                <div class="section-label">Client Stories</div>
+                <h2 class="section-title" style="color: white;">Investor Testimonials</h2>
+                <p class="section-subtitle">
+                    Hear from our satisfied investors who have built wealth with us.
+                </p>
+            </div>
+
+            <div class="testimonials-carousel">
+                <div class="carousel-track">
+                    <!-- Testimonial 1 -->
+                    <div class="testimonial-card" style="background-image: url('images/background2.jpg');background-position: center;background-size: cover; background-repeat: no-repeat;">
+                        <div class="testimonial-content">
+                            <div class="quote-icon">"</div>
+                            <p class="testimonial-text">
+                                "I was skeptical at first, but D.i.G Homes delivered on their promise. The documentation process was smooth, and my investment has already appreciated significantly."
+                            </p>
+                        </div>
+                        <div class="testimonial-author">
+                            <div class="author-avatar">
+                                <span>AO</span>
+                            </div>
+                            <div class="author-info">
+                                <h4>Adebayo O.</h4>
+                                <p>Golden Park Investor</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Testimonial 2 -->
+                    <div class="testimonial-card" style="background-image: url('images/background2.jpg');background-position: center;background-size: cover; background-repeat: no-repeat;">
+                        <div class="testimonial-content">
+                            <div class="quote-icon">"</div>
+                            <p class="testimonial-text">
+                                "The team at D.i.G Homes made my first real estate investment stress-free. Their professionalism and attention to detail are commendable."
+                            </p>
+                        </div>
+                        <div class="testimonial-author">
+                            <div class="author-avatar">
+                                <span>CF</span>
+                            </div>
+                            <div class="author-info">
+                                <h4>Chioma F.</h4>
+                                <p>Virgin Land Buyer</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Testimonial 3 -->
+                    <div class="testimonial-card" style="background-image: url('images/background2.jpg');background-position: center;background-size: cover; background-repeat: no-repeat;">
+                        <div class="testimonial-content">
+                            <div class="quote-icon">"</div>
+                            <p class="testimonial-text">
+                                "I've invested with multiple real estate companies, but D.i.G Homes stands out for their transparency and customer service. Highly recommended!"
+                            </p>
+                        </div>
+                        <div class="testimonial-author">
+                            <div class="author-avatar">
+                                <span>TE</span>
+                            </div>
+                            <div class="author-info">
+                                <h4>Tunde E.</h4>
+                                <p>Multiple Property Owner</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="carousel-controls" style="display: none;">
+                    <button class="carousel-prev"><i class="fas fa-chevron-left"></i></button>
+                    <button class="carousel-next"><i class="fas fa-chevron-right"></i></button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="luxury-contact" style="background-image: url('images/background.jpg');background-position: center;background-size: cover; background-repeat: no-repeat;" id="contact">
+        <div class="section-container">
+            <div class="section-header">
+                <div class="section-label">Get In Touch</div>
+                <h2 class="section-title" style="color: black;">Begin Your Journey</h2>
+                <p class="section-subtitle" style="color: #333;">
+                    Contact us for personalized investment consultation and property viewing.
+                </p>
+            </div>
+
+            <div class="contact-grid">
+                <!-- Contact Info -->
+                <div class="contact-info">
+                    <a href="https://wa.me/2348141843331" class="info-link">
+                    <div class="info-card">
+                        <div class="info-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <div class="info-content">
+                            <h4>Phone</h4>
+                            <p>+234 903 409 7278</p>
+                            <span class="info-note">Mon - Fri, 8AM - 6PM</span>
+                        </div>
+                    </div>
+                    </a>
+                    
+                    <a href="mailto:dighqltd@gmail.com" class="info-link">
+                    <div class="info-card">
+                        <div class="info-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="info-content">
+                            <h4>Email</h4>
+                            <p>dighqltd@gmail.com</p>
+                            <span class="info-note">Response within 24 hours</span>
+                        </div>
+                    </div>
+                    </a>
+                    
+                    <a href="contact.html#map" class="info-link">
+                    <div class="info-card">
+                        <div class="info-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div class="info-content">
+                            <h4>Office</h4>
+                            <p>Malete, Kwara State</p>
+                            <span class="info-note">Nigeria</span>
+                        </div>
+                    </div>
+                    </a>
+                    
+                    <a>
+                    <div class="info-card">
+                        <div class="info-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div class="info-content">
+                            <h4>Site Visits</h4>
+                            <p>By Appointment</p>
+                            <span class="info-note">Weekdays & Weekends</span>
+                        </div>
+                    </div>
+                    </a>
+                </div>
+
+                <!-- Contact Form -->
+                <div class="contact-form-container">
+                    <form id="luxuryContactForm" class="contact-form" method="post" action="https://formspree.io/f/xjkqzzyn">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <input type="text" name="name" class="form-input" required>
+                                <span class="form-label">Full Name</span>
+                            </div>
+                            <div class="form-group">
+                                <input type="email" name="email" class="form-input" required>
+                                <span class="form-label">Email Address</span>
+                            </div>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <input type="tel" name="phone number" class="form-input" required>
+                                <span class="form-label">Phone Number</span>
+                            </div>
+                            <div class="form-group">
+                                <select class="form-select" name="interest" required>
+                                    <option value="">I'm interested in</option>
+                                    <option value="golden-park">Golden Park Estates</option>
+                                    <option value="virgin-land">Kwasu Prime Land</option>
+                                    <option value="consultation">Investment Consultation</option>
+                                    <option value="site-visit">Site Visit Appointment</option>
+                                </select>
+                                <span class="form-label">Interest</span>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <textarea class="form-textarea" name="message" rows="4" required></textarea>
+                            <span class="form-label">Message</span>
+                        </div>
+                        
+                        <div class="form-footer">
+                            <button type="submit" class="btn-submit">
+                                <span>Send Message</span>
+                                <i class="fas fa-paper-plane"></i>
+                            </button>
+                            <div class="form-notice">
+                                <i class="fas fa-lock" style="color: #2a4691;margin-top: 5px;"></i>
+                                <span style="color: #2a4691;margin-top: 5px;">Your information is secure and encrypted</span>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="luxury-footer">
+        <div class="footer-container">
+            <!-- Main Footer -->
+            <div class="footer-main">
+                <div class="footer-brand">
+                    <a href="index.html" class="footer-logo">
+                        <span class="logo-icon">◈</span>
+                        <span class="logo-text">
+                            <span class="logo-primary">D.i.G</span>
+                            <span class="logo-separator">|</span>
+                            <span class="logo-secondary">HOMES</span>
+                        </span>
+                    </a>
+                    <p class="footer-tagline">
+                        Building Dreams, Securing Prosperity through premium real estate investments.
+                    </p>
+                    <div class="social-links">
+                        <a href="https://www.instagram.com/dig_homes" class="social-link">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="https://www.facebook.com/dighomeshq" class="social-link">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+            <!--        <a href="#" class="social-link">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="#" class="social-link">
+                            <i class="fab fa-twitter"></i>
+                        </a>    -->
+                    </div>
+                </div>
+                
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="#features">Why Us</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-links" style="display: none;">
+                    <h4>Properties</h4>
+                    <ul>
+                        <li><a href="properties.html#golden-park">Golden Park Estates</a></li>
+                        <li><a href="properties.html#virgin-land">Kwasu Prime Land</a></li>
+                        <li><a href="properties.html#premium">Premium Developments</a></li>
+                        <li><a href="properties.html#coming-soon">Coming Soon</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-contact">
+                    <h4>Contact Info</h4>
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <span>+234 903 409 7278</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <span>dighqltd@gmail.com</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>Malete, Kwara State, Nigeria</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Footer Bottom -->
+            <div class="footer-bottom">
+                <div class="copyright">
+                    <p style="color: #2a4691;">&copy; 2025 D.i.G Homes. All rights reserved.</p>
+                </div>
+                <div class="footer-legal" style="display: none;">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                    <a href="#">Cookie Policy</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Form Authenticator Modal -->
+    <div class="authenticator-modal" id="authenticatorModal">
+        <div class="authenticator-content">
+            <div class="authenticator-icon success">
+                <i class="fas fa-check-circle"></i>
+            </div>
+            <div class="authenticator-icon error">
+                <i class="fas fa-exclamation-circle"></i>
+            </div>
+            <h3 class="authenticator-title">Message Sent</h3>
+            <p class="authenticator-message">
+                Thank you for your inquiry! Our team will contact you within 24 hours.
+            </p>
+            <button class="btn-close-authenticator">Continue</button>
+        </div>
+    </div>
+
+    <!-- Back to Top -->
+    <button class="back-to-top" id="backToTop">
+        <i class="fas fa-chevron-up"></i>
+    </button>
+
+    <script>
+                // Animation controller
+        class WordCycler {
+            constructor(containerSelector) {
+                this.container = document.querySelector(containerSelector);
+                this.words = this.container.querySelectorAll('.changing-word');
+                this.currentIndex = 0;
+                this.interval = null;
+                this.animationDuration = 3000; // Time each word is displayed (ms)
+                
+                // Initialize
+                this.init();
+            }
+            
+            init() {
+                // Set initial active word
+                this.words[this.currentIndex].classList.add('active');
+                
+                // Start the animation
+                this.start();
+                
+                // Pause animation on hover
+                this.container.addEventListener('mouseenter', () => this.pause());
+                this.container.addEventListener('mouseleave', () => this.start());
+                
+                // Touch events for mobile
+                this.container.addEventListener('touchstart', () => this.pause());
+                this.container.addEventListener('touchend', () => {
+                    setTimeout(() => this.start(), 2000);
+                });
+            }
+            
+            start() {
+                if (this.interval) clearInterval(this.interval);
+                
+                this.interval = setInterval(() => {
+                    this.nextWord();
+                }, this.animationDuration);
+            }
+            
+            pause() {
+                if (this.interval) {
+                    clearInterval(this.interval);
+                    this.interval = null;
+                }
+            }
+            
+            nextWord() {
+                // Remove active class from current word
+                this.words[this.currentIndex].classList.remove('active');
+                
+                // Calculate next index
+                this.currentIndex = (this.currentIndex + 1) % this.words.length;
+                
+                // Add active class to next word
+                this.words[this.currentIndex].classList.add('active');
+            }
+            
+            // Optional: Go to specific word
+            goToWord(wordText) {
+                this.pause();
+                
+                // Find word index
+                const wordArray = Array.from(this.words);
+                const targetIndex = wordArray.findIndex(word => 
+                    word.dataset.word === wordText
+                );
+                
+                if (targetIndex !== -1 && targetIndex !== this.currentIndex) {
+                    // Remove active class from current word
+                    this.words[this.currentIndex].classList.remove('active');
+                    
+                    // Set new current index
+                    this.currentIndex = targetIndex;
+                    
+                    // Add active class to target word
+                    this.words[this.currentIndex].classList.add('active');
+                }
+                
+                // Restart animation after 3 seconds
+                setTimeout(() => this.start(), 3000);
+            }
+        }
+        
+        // Initialize when DOM is loaded
+        document.addEventListener('DOMContentLoaded', () => {
+            const wordCycler = new WordCycler('.changing-word-container');
+            
+            // Optional: Add click/tap functionality to cycle words manually
+            document.querySelector('.changing-word-container').addEventListener('click', () => {
+                wordCycler.nextWord();
+                wordCycler.pause();
+                setTimeout(() => wordCycler.start(), 3000);
+            });
+            
+            // Optional: Console log for demonstration
+            console.log('Word cycler initialized. Words: Dreams → Homes → Lives');
+            
+            // Optional: Expose to global scope for testing
+            window.wordCycler = wordCycler;
+        });
+        
+        // Optional: Add a subtle background animation
+        document.addEventListener('DOMContentLoaded', () => {
+            const heroSection = document.querySelector('.hero-section');
+            
+            // Create floating particles
+            for (let i = 0; i < 20; i++) {
+                const particle = document.createElement('div');
+                particle.style.position = 'absolute';
+                particle.style.width = Math.random() * 4 + 1 + 'px';
+                particle.style.height = particle.style.width;
+                particle.style.background = 'rgba(255, 215, 0, 0.3)';
+                particle.style.borderRadius = '50%';
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.top = Math.random() * 100 + '%';
+                particle.style.pointerEvents = 'none';
+                heroSection.appendChild(particle);
+                
+                // Animate particle
+                animateParticle(particle);
+            }
+            
+            function animateParticle(element) {
+                let x = parseFloat(element.style.left);
+                let y = parseFloat(element.style.top);
+                let xSpeed = (Math.random() - 0.5) * 0.2;
+                let ySpeed = (Math.random() - 0.5) * 0.2;
+                
+                function move() {
+                    x += xSpeed;
+                    y += ySpeed;
+                    
+                    // Bounce off edges
+                    if (x <= 0 || x >= 100) xSpeed *= -1;
+                    if (y <= 0 || y >= 100) ySpeed *= -1;
+                    
+                    // Keep within bounds
+                    x = Math.max(0, Math.min(100, x));
+                    y = Math.max(0, Math.min(100, y));
+                    
+                    element.style.left = x + '%';
+                    element.style.top = y + '%';
+                    
+                    requestAnimationFrame(move);
+                }
+                
+                move();
+            }
+        });
+    </script>
+
+    <!-- Scripts -->
+    <script src="js/luxury.js"></script>
+    <script src="js/animations.js"></script>
+    <script src="js/form-authenticator.js"></script>
+    <script src="js/properties.js"></script>
+    <script src="js/calculator-fix.js"></script>
+</body>
+</html>

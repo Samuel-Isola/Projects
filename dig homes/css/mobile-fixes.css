@@ -1,0 +1,232 @@
+/* Mobile Display Fixes */
+@media (max-width: 768px) {
+    /* Hero Section Fixes */
+    .luxury-hero {
+        padding-top: 80px;
+        min-height: auto;
+        padding-bottom: 3rem;
+    }
+    
+    .headline-main {
+        font-size: 2.5rem !important;
+        line-height: 1.2 !important;
+    }
+    
+    .headline-main .line-1,
+    .headline-main .line-2,
+    .headline-main .line-3 {
+        display: block !important;
+        margin-bottom: 0.5rem;
+    }
+    
+    .hero-subtitle {
+        font-size: 1rem !important;
+        line-height: 1.6 !important;
+    }
+    
+    .hero-stats {
+        flex-direction: column;
+        gap: 1.5rem;
+        margin-bottom: 2rem;
+    }
+    
+    .stat-card {
+        text-align: center;
+        padding: 1rem;
+    }
+    
+    .stat-value {
+        font-size: 2rem !important;
+    }
+    
+    .hero-actions {
+        flex-direction: column;
+        gap: 1rem;
+        margin-bottom: 2rem;
+    }
+    
+    .btn-primarys,
+    .btns-secondary {
+        width: 100%;
+        justify-content: center;
+        padding: 1rem !important;
+    }
+    
+    /* Features Section Fixes */
+    .features-grid {
+        grid-template-columns: 1fr !important;
+        gap: 1.5rem;
+    }
+    
+    .feature-card {
+        padding: 1.5rem !important;
+        margin-bottom: 1rem;
+    }
+    
+    /* Properties Section Fixes */
+    .properties-grid {
+        grid-template-columns: 1fr !important;
+        gap: 1.5rem;
+    }
+    
+    .property-card {
+        margin-bottom: 1.5rem;
+    }
+    
+    .property-media {
+        height: 200px;
+    }
+    
+    .property-features {
+        grid-template-columns: 1fr !important;
+        gap: 0.75rem;
+    }
+    
+    .property-footer {
+        flex-direction: column;
+        gap: 0.75rem;
+    }
+    
+    .btn-inquire,
+    .btn-view {
+        width: 100%;
+        text-align: center;
+    }
+    
+    /* Investment Calculator Fixes */
+    .calculator-container {
+        padding: 2rem 1rem !important;
+    }
+    
+    .calculator-content {
+        grid-template-columns: 1fr !important;
+        gap: 2rem;
+    }
+    
+    .calculator-form,
+    .calculator-results {
+        width: 100%;
+    }
+    
+    .calculator-results {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 1rem;
+    }
+    
+    .result-card {
+        padding: 1.5rem !important;
+    }
+    
+    .result-value {
+        font-size: 1.5rem !important;
+    }
+    
+    /* Testimonials Fixes */
+    .testimonial-card {
+        flex: 0 0 100% !important;
+        padding: 1.5rem !important;
+    }
+    
+    /* Contact Section Fixes */
+    .contact-grid {
+        grid-template-columns: 1fr !important;
+        gap: 2rem;
+    }
+    
+    .contact-info {
+        grid-template-columns: 1fr !important;
+        gap: 1rem;
+    }
+    
+    .info-card {
+        padding: 1.5rem !important;
+    }
+    
+    .form-row {
+        grid-template-columns: 1fr !important;
+        gap: 1rem;
+    }
+    
+    /* Footer Fixes */
+    .footer-main {
+        grid-template-columns: 1fr !important;
+        gap: 2rem;
+    }
+    
+    .footer-links,
+    .footer-contact {
+        margin-top: 1.5rem;
+    }
+    
+    .footer-bottom {
+        flex-direction: column;
+        gap: 1rem;
+        text-align: center;
+    }
+    
+    /* Navigation Fixes */
+    .nav-container {
+        padding: 1rem !important;
+    }
+    
+    .brand-logo .logo-text {
+        font-size: 0.9rem;
+    }
+    
+    /* General Fixes */
+    .section-container {
+        padding: 3rem 1rem !important;
+    }
+    
+    .section-title {
+        font-size: 2rem !important;
+    }
+    
+    .section-subtitle {
+        font-size: 1rem !important;
+        padding: 0 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .headline-main {
+        font-size: 2rem !important;
+    }
+    
+    .section-title {
+        font-size: 1.8rem !important;
+    }
+    
+    .calculator-results {
+        grid-template-columns: 1fr !important;
+    }
+    
+    .property-header {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+    
+    .property-price {
+        text-align: left;
+    }
+    
+    .nav-actions .btn-consultations {
+        padding: 0.5rem 1rem;
+        font-size: 0.8rem;
+    }
+}
+
+/* Fix for iOS Safari */
+@supports (-webkit-touch-callout: none) {
+    .luxury-hero {
+        min-height: -webkit-fill-available;
+    }
+}
+
+/* Fix for Android Chrome */
+@media (max-width: 768px) and (orientation: landscape) {
+    .luxury-hero {
+        min-height: auto;
+        padding-bottom: 3rem;
+    }
+}
