@@ -1,0 +1,59 @@
+{
+  "site": {
+    "name": "Baptist Model High School Ilorin",
+    "domain": "baptist-model-ilorin.netlify.app",
+    "description": "Premier Christian secondary school in Kwara State, Nigeria",
+    "yearFounded": "1962",
+    "address": "Ilorin, Kwara State, Nigeria",
+    "contact": {
+      "phone": "+234 XXX XXX XXXX",
+      "email": "info@baptist-model-ilorin.edu.ng",
+      "hours": "Monday-Friday: 6:00 AM - 3:30 PM"
+    }
+  },
+  "pages": [
+    {
+      "title": "Home",
+      "url": "index.html",
+      "description": "Welcome to Baptist Model High School Ilorin"
+    },
+    {
+      "title": "About",
+      "url": "about.html",
+      "description": "Our history, mission, vision and values"
+    },
+    {
+      "title": "Academics",
+      "url": "academics.html",
+      "description": "Academic programs, curriculum and facilities"
+    },
+    {
+      "title": "Contact",
+      "url": "contact.html",
+      "description": "Contact information and admissions process"
+    }
+  ],
+  "academics": {
+    "programs": [
+      {
+        "name": "Science & Technology",
+        "courses": ["Physics", "Chemistry", "Biology", "Computer Science", "Mathematics"]
+      },
+      {
+        "name": "Arts & Humanities",
+        "courses": ["Literature", "History", "Government", "CRS", "Fine Arts"]
+      },
+      {
+        "name": "Commercial Studies",
+        "courses": ["Accounting", "Economics", "Commerce", "Business Studies"]
+      }
+    ],
+    "examinations": ["WASSCE", "NECO"],
+    "curriculum": "NERDC Compliant"
+  },
+  "social": {
+    "facebook": "https://facebook.com/baptist-model-ilorin",
+    "twitter": "https://twitter.com/baptist-model-ilorin",
+    "instagram": "https://instagram.com/baptist-model-ilorin"
+  }
+}

@@ -1,0 +1,12 @@
+User-agent: *
+Allow: /
+Disallow: /admin/
+Disallow: /private/
+
+Sitemap: https://baptist-model-ilorin.netlify.app/sitemap.xml
+
+# Crawl delay to prevent server overload
+Crawl-delay: 2
+
+# Preferred host
+Host: baptist-model-ilorin.netlify.app
